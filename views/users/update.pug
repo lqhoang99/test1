@@ -1,0 +1,10 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Update USER
+  form(action="/users/"+id+"/update",  method="POST")
+    label Name 
+    br
+    input(type="text",name="upuser",value=user.name,class="form-control")
+    br
+    button(class="btn btn-primary btn-lg mt-1")  Update

@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Transactions
+  a(href="/transactions/create") Create
+  ul
+    each transaction in transactions
+      li
+        span= transaction.userId 
+        span :
+        span &nbsp
+        span= transaction.bookId
+        span &nbsp
+        a(href='/transactions/'+transaction.id+'/complete') isComplete
