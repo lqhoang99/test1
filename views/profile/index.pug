@@ -1,0 +1,16 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Profile
+  img.img-thumbnail(src=user.avatarUrl,width="100")
+  br
+  a(href="profile/avatar") UpdateAvatar
+  form(action="/profile/"+user.id,  method="POST")
+    label Name 
+    br
+    input(type="text",name="upuser",value=user.name,class="form-control")
+    br
+    label Email
+    input(type="text",name="upemail",value=user.email,class="form-control")
+    br
+    button(class="btn btn-primary btn-lg mt-1")  Update

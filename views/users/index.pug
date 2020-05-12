@@ -1,0 +1,27 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Users
+  a.btn.btn-primary(href="/users/create") Create
+  .container
+    .row
+      each user in users
+        .col-4.col-sm-4
+          .card.mb-3
+            img.card-img-top(src="https://picsum.photos/180")
+            .card-body.text-center
+              h5.card-title=user.name
+              a.btn.btn-primary.m-1(href="/users/"+user.id+"/update") Update
+              a.btn.btn-primary(href="/users/"+user.id+"/delete") Delete
+    nav(aria-label='Page navigation example')
+        ul.pagination
+          li.page-item
+          a.page-link(href='http://localhost:3000/users?page='+(--page)) Previous
+          li.page-item
+          a.page-link(href='http://localhost:3000/users?page=1') 1
+          li.page-item
+          a.page-link(href='http://localhost:3000/users?page=2') 2
+          li.page-item
+          a.page-link(href='http://localhost:3000/users?page=3') 3
+          li.page-item
+          a.page-link(href="http://localhost:3000/users?page="+(++page)) Next

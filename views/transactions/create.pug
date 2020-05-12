@@ -1,0 +1,18 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Create transaction
+  form(action="/transactions/create", method="POST")
+    lable Select user:
+    select(name="userId" class="form-control")
+      option(value="aPhYR_8Wg") aPhYR_8Wg
+      option(value="SbCJs1S8v") SbCJs1S8v
+      option(value="l2WEI79cy") l2WEI79cy
+    br
+    lable Select book:
+    select(name="bookId" class="form-control")
+      option(value="uXLwxEFdZ") uXLwxEFdZ
+      option(value="IqdiXG9tK") IqdiXG9tK
+      option(value="JNY9LvIjX") JNY9LvIjX
+    br
+    button(class="btn btn-primary btn-lg mt-1") Create

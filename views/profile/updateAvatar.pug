@@ -1,0 +1,11 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Update Avatar
+  img.img-thumbnail(src=user.avatarUrl,width="100")
+  form(action="/profile/avatar/"+user.id,method="POST",enctype="multipart/form-data")
+        .form-group
+            label(for="avatar") Avatar
+            input#avatar.form-control-file(name="avatar",type="file")
+
+        button.btn.btn-dark Update

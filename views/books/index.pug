@@ -1,0 +1,15 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Books 
+  h2 Cart (#{numCart})
+  .container
+    .row
+      each book in books
+        .col-4.col-sm-4
+          .card.mb-3
+            img.card-img-top(src=book.coverUrl)
+            .card-body.text-center
+              h5.card-title=book.title
+              a.btn.btn-primary(href='/cart/add/' + book.id) Add
+              
