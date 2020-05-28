@@ -3,6 +3,8 @@ extends ../layouts/common.pug
 block content
   h1 Books 
   h2 Cart (#{numCart})
+  br
+  a.btn.btn-primary(href='/cart/thue') Thue
   .container
     .row
       each book in books
@@ -11,5 +13,5 @@ block content
             img.card-img-top(src=book.coverUrl)
             .card-body.text-center
               h5.card-title=book.title
-              a.btn.btn-primary(href='/cart/add/' + book.id) Add
+              a.btn.btn-primary(href='/cart/add/'+ book.id) Add
               

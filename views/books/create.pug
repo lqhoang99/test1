@@ -1,9 +1,0 @@
-extends ../layouts/common.pug
-
-block content
-  form(action="/books/create",method="POST")
-    label(for="title") Title:
-    input#title(name="title",type="text",class="form-control")
-    label(for="description") Description: 
-    input#description(name="description ",type="text",class="form-control")
-    button(class="btn btn-primary btn-lg mt-1") Create

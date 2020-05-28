@@ -1,4 +1,5 @@
 var db = require("../db");
+var shortid=require('shortid');
 module.exports.addToCart = function(req, res, next) {
   var bookId = req.params.bookId;
   var sessionId = req.signedCookies.sessionId;
@@ -26,7 +27,34 @@ module.exports.addToCart = function(req, res, next) {
     .find({ id: sessionId })
     .assign({ numCart: numCart + 1 })
     .write();
-  res.redirect("/books",{
-    numCart:numCart
-  });
+  res.redirect("/books");
+};
+module.exports.thue = function(req, res, next) {
+  var userId= req.signedCookies.userId;
+  if(!userId){
+    res.redirect("/auth/login");
+    return;
+  }
+  var id=shortid.generate();
+  var sessionId = req.signedCookies.sessionId;
+  
+  var object = db.get("sessions")
+              .find({ id: sessionId })
+              .value();
+  var cart=object.cart;
+  for(var i in cart){
+    db.get("transactions")
+      .push({
+        userId:userId,
+        bookId:i,
+        id:id
+      })
+      .write();
+  }
+  db.get('sessions')
+  .find({ id: sessionId })
+  .assign({ cart: {}})
+  .assign({ numCart: 0})
+  .write()
+  res.redirect("/books");
 };
